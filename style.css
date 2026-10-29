@@ -1421,3 +1421,9 @@ ul {
         display: none; /* Magiging maliit na avatar lang sa maliit na screen para hindi masikip */
     }
 }
+/* --- LAKI NG PANGALAN SA HEADER --- */
+.nav-profile-trigger .logo-text,
+.nav-name {
+    font-size: 1.15rem; /* Pwede mong gawing 1.2rem kung gusto mo pang mas lumaki */
+    font-weight: 750;   /* Ginawa ring mas bold para mas litaw */
+}
