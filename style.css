@@ -123,3 +123,20 @@
     rgba(255, 255, 255, .25)
   );
 }
+/* Fix hero layout */
+.hero-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.id-scene {
+  width: 280px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
