@@ -165,8 +165,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .copyright { border-top: 1px solid #1c2b3e; padding-top: 15px; text-align: center; font-size: .72rem; }
 
 /* Reveal animation: JavaScript adds .visible when an element enters the screen */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* Tablet and mobile layouts */
 @media (max-width: 900px) {
