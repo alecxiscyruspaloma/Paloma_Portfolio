@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startSlideTimer();
     }
 
-    // 7. Artwork Lightbox (Expand Image on Click - Naka-loob na sa tamang block)
+    // 7. Artwork Lightbox (Expand Image on Click)
     const lightboxModal = document.getElementById('artworkLightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxClose = document.querySelector('.lightbox-close');
@@ -205,6 +205,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lightboxClose) {
         lightboxClose.addEventListener('click', () => {
             lightboxModal.classList.remove('active');
+        });
+    }
+
+    // 8. Header Profile to ID Card Popup Modal
+    const profilePopupBtn = document.getElementById('profilePopupBtn');
+    const idPopupModal = document.getElementById('idPopupModal');
+    const idPopupClose = document.getElementById('idPopupClose');
+
+    if (profilePopupBtn && idPopupModal) {
+        profilePopupBtn.addEventListener('click', () => {
+            idPopupModal.classList.add('active');
+        });
+
+        if (idPopupClose) {
+            idPopupClose.addEventListener('click', () => {
+                idPopupModal.classList.remove('active');
+            });
+        }
+
+        idPopupModal.addEventListener('click', (e) => {
+            if (e.target === idPopupModal) {
+                idPopupModal.classList.remove('active');
+            }
         });
     }
 });
