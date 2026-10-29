@@ -59,3 +59,22 @@ contactForm.addEventListener("submit", (event) => {
   window.location.href = `mailto:${portfolioEmail}?subject=${subject}&body=${body}`;
   formNote.textContent = "Your email app should open with your message ready. If it doesn't, email me directly.";
 });
+
+/* School ID and Lanyard Click Animation */
+const idLanyard = document.getElementById("idLanyard");
+
+if (idLanyard) {
+  idLanyard.addEventListener("click", () => {
+    idLanyard.classList.remove("swing");
+
+    // Restart the animation every time it is clicked
+    void idLanyard.offsetWidth;
+
+    idLanyard.classList.add("swing");
+  });
+
+  idLanyard.addEventListener("animationend", () => {
+    idLanyard.classList.remove("swing");
+  });
+}
+
