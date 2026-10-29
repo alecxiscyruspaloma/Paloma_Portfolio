@@ -1,75 +1,182 @@
-/* GREEN AND GOLD — STUDENT ID + LANYARD ONLY */
+/* Student ID and lanyard */
+.id-scene { width: 280px; max-width: 100%; position: relative; z-index: 3; perspective: 1000px; cursor: pointer; }
+.id-lace { display: flex; flex-direction: column; align-items: center; transform-origin: top center; }
 
-#idLanyard .lace-strap {
+.lace-strap {
+  width: 42px;
+  height: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid #e4b84f;
+  border-radius: 5px;
   background: repeating-linear-gradient(
     0deg,
     #075334 0 16px,
     #15945e 16px 32px
   );
-  border-color: #e4b84f;
+  box-shadow: inset 2px 0 4px #ffffff30, 3px 4px 8px #0003;
 }
 
-#idLanyard .lace-strap span {
+.lace-strap span {
+  color: #fff1bd;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-shadow: 0 1px 2px #0008;
+  white-space: nowrap;
+}
+
+.lace-clip {
+  width: 32px;
+  height: 32px;
+  margin-top: -2px;
+  position: relative;
+  border: 2px solid #a87920;
+  border-radius: 7px 7px 11px 11px;
+  background: linear-gradient(135deg, #fff0a8, #c08b24 50%, #f8d976);
+  box-shadow: 0 3px 6px #0004;
+}
+
+.lace-clip::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #c08b24;
+  border-radius: 50%;
+  left: 7px;
+  bottom: -10px;
+}
+
+.student-id {
+  width: 245px;
+  min-height: 355px;
+  margin-top: 7px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #163d2b;
+  border: 5px solid #e4b84f;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #fffdf4, #f2f5e8 55%, #fff5cf);
+  box-shadow: 0 15px 30px #0004, 0 0 0 2px #c99a32, inset 0 0 12px white;
+}
+
+.id-gloss {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(120deg, #ffffff60, transparent 28%, transparent 70%, #ffffff35);
+}
+
+.id-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px 4px;
+  margin: -12px -12px 12px;
+  background: linear-gradient(120deg, #075334, #15945e);
+  color: white;
+  border-bottom: 4px solid #e4b84f;
+}
+
+.id-header strong {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  color: white;
+}
+
+.id-header small {
+  display: block;
+  font-size: 8px;
+  margin-top: 3px;
+  letter-spacing: 1px;
   color: #fff1bd;
 }
 
-#idLanyard .lace-clip {
-  background: linear-gradient(
-    135deg,
-    #fff0a8,
-    #c08b24 50%,
-    #f8d976
-  );
-  border-color: #a87920;
-}
-
-#idLanyard .student-id {
-  color: #163d2b;
-  background: linear-gradient(
-    145deg,
-    #fffdf4,
-    #f2f5e8 55%,
-    #fff5cf
-  );
-  border-color: #e4b84f;
-}
-
-#idLanyard .id-header {
-  background: linear-gradient(120deg, #075334, #15945e);
-  border-bottom-color: #e4b84f;
-}
-
-#idLanyard .school-logo {
+.school-logo {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #e4b84f;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 900;
   color: #ffe49a;
   background: #08613f;
-  border-color: #e4b84f;
 }
 
-#idLanyard .id-header strong,
-#idLanyard .id-name,
-#idLanyard .id-footer {
+.id-photo {
+  width: 112px;
+  height: 130px;
+  margin: 0 auto 12px;
+  padding: 4px;
+  background: #dce9df;
+  border: 2px solid #e4b84f;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px #0002;
+  overflow: hidden;
+}
+
+.id-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+}
+
+.id-name {
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 8px 0;
+  color: #08613f;
+  overflow-wrap: anywhere;
+}
+
+.id-course {
+  padding: 7px 4px;
+  background: linear-gradient(90deg, #075334, #15945e);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  border-radius: 4px;
+}
+
+.id-line {
+  height: 1px;
+  background: linear-gradient(90deg, #16a36b, #e4b84f, #16a36b);
+  margin-top: 16px;
+}
+
+.id-footer {
+  padding-top: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
   color: #08613f;
 }
 
-#idLanyard .id-header small {
-  color: #fff1bd;
-}
+.id-lace.swing { animation: idSwing 1.1s ease-in-out; }
 
-#idLanyard .id-course {
-  background: linear-gradient(90deg, #075334, #15945e);
-  color: #fff;
-}
-
-#idLanyard .id-photo {
-  background: #dce9df;
-  border-color: #e4b84f;
-}
-
-#idLanyard .id-line {
-  background: linear-gradient(
-    90deg,
-    #16a36b,
-    #e4b84f,
-    #16a36b
-  );
+@keyframes idSwing {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(9deg); }
+  40% { transform: rotate(-8deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-3deg); }
 }
