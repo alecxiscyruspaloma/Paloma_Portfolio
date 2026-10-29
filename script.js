@@ -87,7 +87,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+// 2. Interactive Lanyard / Student ID Spring Bounce Effect
+    const idLanyard = document.getElementById('idLanyard');
+    if (idLanyard) {
+        idLanyard.addEventListener('click', () => {
+            // Kung kasalukuyan pang nagba-bounce, huwag munang pansinin
+            if (idLanyard.classList.contains('bounce-active')) return;
 
+            // Idagdag ang animation class
+            idLanyard.classList.add('bounce-active');
+
+            // Alisin ang class pagkalipas ng 850ms para pwede na ulit pindutin
+            setTimeout(() => {
+                idLanyard.classList.remove('bounce-active');
+            }, 850);
+        });
+
+        // 3D Mouse Hover Tilt Effect (Hindi maaapektuhan ang bounce)
+        idLanyard.addEventListener('mousemove', (e) => {
+            if (idLanyard.classList.contains('bounce-active')) return;
+
+            const rect = idLanyard.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const rotateX = (-y / 10);
+            const rotateY = (x / 10);
+            
+            idLanyard.style.transition = 'transform 0.05s ease-out';
+            idLanyard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        idLanyard.addEventListener('mouseleave', () => {
+            if (!idLanyard.classList.contains('bounce-active')) {
+                idLanyard.style.transition = 'transform 0.5s ease-in-out';
+                idLanyard.style.transform = 'rotateX(0deg) rotateY(0deg) rotate(0deg)';
+            }
+        });
+    }
     // 3. Smooth Scroll Reveal Animation (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal');
 
@@ -131,3 +168,17 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 });
+/* --- SPRING BOUNCE KEYFRAMES --- */
+@keyframes springBounce {
+    0% { transform: rotate(0deg) scale(1); }
+    15% { transform: rotate(16deg) scale(0.97); }
+    35% { transform: rotate(-13deg) scale(1.01); }
+    55% { transform: rotate(9deg) scale(1); }
+    75% { transform: rotate(-5deg) scale(1); }
+    90% { transform: rotate(2deg) scale(1); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+.id-scene.bounce-active {
+    animation: springBounce 0.85s cubic-bezier(0.28, 0.84, 0.42, 1.12);
+}
