@@ -28,14 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Interactive Lanyard / Student ID Spring Bounce Effect
+  // 2. Interactive Lanyard / Student ID Spring Bounce Effect
     const idLanyard = document.getElementById('idLanyard');
     if (idLanyard) {
         idLanyard.addEventListener('click', () => {
             // Kung kasalukuyan pang nagba-bounce, huwag munang pansinin
             if (idLanyard.classList.contains('bounce-active')) return;
 
-            // Idagdag ang animation class
+            // Idagdag ang animation class para mag-bounce/swing
             idLanyard.classList.add('bounce-active');
 
             // Alisin ang class pagkalipas ng 850ms para pwede na ulit pindutin
