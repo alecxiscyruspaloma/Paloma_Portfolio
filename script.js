@@ -28,27 +28,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Smooth Scroll Reveal Animation (Intersection Observer)
+    // 2. Interactive Lanyard / Student ID Click Swing Effect
+    const idLanyard = document.getElementById('idLanyard');
+    if (idLanyard) {
+        let isSwinging = false;
+        idLanyard.addEventListener('click', () => {
+            if (isSwinging) return;
+            isSwinging = true;
+
+            idLanyard.style.transition = 'transform 0.2s ease-in-out';
+            idLanyard.style.transform = 'rotate(10deg)';
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(-8deg)';
+            }, 200);
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(5deg)';
+            }, 400);
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(-2deg)';
+            }, 600);
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(0deg)';
+                isSwinging = false;
+            }, 800);
+        });
+    }
+
+    // 3. Smooth Scroll Reveal Animation (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal');
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Optional: Stop observing once revealed
-                // observer.unobserve(entry.target);
             }
         });
     }, {
         root: null,
-        threshold: 0.15 // Triggers when 15% of the section is visible
+        threshold: 0.15
     });
 
     revealElements.forEach(element => {
         revealObserver.observe(element);
     });
 
-    // 3. Contact Form Submission Simulation
+    // 4. Contact Form Submission Simulation
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
 
@@ -56,12 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault(); // Prevent page reload
 
-            // Here you could add AJAX fetch to send email if needed, 
-            // but for portfolio showcase, we animate/show success feedback:
             contactForm.style.display = 'none';
             formSuccess.classList.remove('hidden');
 
-            // Reset form after a few seconds if desired
             setTimeout(() => {
                 contactForm.reset();
                 contactForm.style.display = 'block';
@@ -70,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Dynamic Current Year in Footer
+    // 5. Dynamic Current Year in Footer
     const yearSpan = document.getElementById('currentYear');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
