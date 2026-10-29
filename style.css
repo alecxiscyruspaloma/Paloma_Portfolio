@@ -1265,3 +1265,53 @@ ul {
 .carousel-slide.active {
     pointer-events: auto;
 }
+/* --- ARTWORK LIGHTBOX MODAL STYLING --- */
+.lightbox-modal {
+    display: none; /* Naka-hide kapag hindi pinipindot */
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 5, 8, 0.92);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lightbox-modal.active {
+    display: flex; /* Lumalabas kapag na-activate */
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid var(--accent-cyan);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
+    animation: zoomIn 0.3s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: var(--text-main);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 15px var(--accent-cyan);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
