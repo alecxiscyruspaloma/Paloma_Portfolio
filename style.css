@@ -1106,3 +1106,29 @@ ul {
     box-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
     transform: scale(1.05);
 }
+/* --- OVERRIDE LABIS NA ESPASYO SA ABOUT SECTION --- */
+#about {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+}
+
+#about .section-title {
+    margin-bottom: 1.25rem !important;
+}
+
+#about .about-grid {
+    gap: 1.8rem !important;
+    align-items: flex-start !important;
+}
+
+#about .about-text p {
+    margin-bottom: 0.8rem !important;
+}
+
+#about .about-cards {
+    gap: 0.8rem !important;
+}
+
+#about .feature-card {
+    padding: 1.2rem !important;
+}
