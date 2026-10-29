@@ -108,7 +108,18 @@ ul {
 }
 
 .section {
-    padding: 7.5rem 0;
+    padding: 5rem 0;
+}
+
+.section-title {
+    margin-bottom: 2.5rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3rem;
+    align-items: center;
 }
 
 .bg-alt {
