@@ -1,142 +1,87 @@
-/* =========================================
-   GREEN & GOLD STUDENT ID + LANYARD THEME
-   Keeps the existing design and animations
-========================================= */
 
-/* Green lanyard */
-.lace-strap {
-  border-color: #064e3b;
-  background: repeating-linear-gradient(
-    0deg,
-    #064e3b 0 16px,
-    #047857 16px 32px
-  );
-  box-shadow:
-    inset 2px 0 4px rgba(255, 255, 255, .18),
-    3px 4px 8px rgba(0, 0, 0, .3);
-}
+/* ==================================
+   STUDENT ID + LANYARD COLOR OVERRIDE
+   Green and Gold ONLY
+================================== */
 
-.lace-strap span {
-  color: #fef3c7;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
-}
-
-/* Silver metal clip */
-.lace-clip {
-  border-color: #94a3b8;
+#idLanyard .lace-strap {
   background: linear-gradient(
     90deg,
-    #64748b,
-    #f8fafc,
-    #94a3b8,
-    #475569
+    #075334,
+    #15945e 35%,
+    #0a7047 70%,
+    #064b30
   );
+  border-left: 2px solid #e4b84f;
+  border-right: 2px solid #e4b84f;
 }
 
-.lace-clip::after {
-  border-color: #cbd5e1;
-}
-
-/* White glossy student ID holder */
-.student-id {
-  color: #064e3b;
-  border-color: #fbbf24;
+#idLanyard .lace-strap::before,
+#idLanyard .lace-strap::after {
   background: linear-gradient(
-    145deg,
-    #ffffff 0%,
-    #f9fafb 75%,
-    #ecfdf5 100%
-  );
-  box-shadow:
-    0 15px 30px rgba(0, 0, 0, .25),
-    0 0 0 2px rgba(251, 191, 36, .6),
-    inset 0 0 12px rgba(255, 255, 255, .9);
-}
-
-/* Emerald green school header */
-.id-header {
-  background: linear-gradient(
-    120deg,
-    #064e3b,
-    #047857,
-    #065f46
-  );
-  color: #ffffff;
-  border-bottom: 4px solid #fbbf24;
-}
-
-/* Gold-bordered school logo */
-.school-logo {
-  border-color: #fbbf24;
-  background: #ffffff;
-  color: #065f46;
-}
-
-/* Student photo frame */
-.id-photo {
-  background: #ffffff;
-  border-color: #d1d5db;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, .12);
-}
-
-/* Student name */
-.id-name {
-  color: #064e3b;
-}
-
-/* Green course banner with gold border */
-.id-course {
-  background: linear-gradient(
-    90deg,
-    #047857,
-    #059669,
-    #065f46
-  );
-  color: #ffffff;
-  border: 1px solid #fbbf24;
-}
-
-/* Gold divider */
-.id-line {
-  background: linear-gradient(
-    90deg,
     transparent,
-    #d4a72c,
-    #fbbf24,
-    #d4a72c,
+    #ffe49a,
+    #e4b84f,
     transparent
   );
 }
 
-/* Green ID footer */
-.id-footer {
-  color: #065f46;
+#idLanyand .lace-strap span {
+  color: #fff1bd;
 }
 
-/* Keep the glossy effect */
-.id-gloss {
+#idLanyard .lace-clip {
   background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, .45),
-    transparent 28%,
-    transparent 70%,
-    rgba(255, 255, 255, .25)
+    135deg,
+    #fff0a8,
+    #c08b24 50%,
+    #f8d976
   );
-}
-/* Fix hero layout */
-.hero-grid {
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  border-color: #a87920;
 }
 
-.id-scene {
-  width: 280px;
-  max-width: 100%;
-  margin: 0 auto;
+#idLanyard .student-id {
+  color: #163d2b;
+  background: linear-gradient(
+    145deg,
+    #fffdf4,
+    #f2f5e8 55%,
+    #fff5cf
+  );
+  border-color: #e4b84f;
 }
 
-@media (max-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
+#idLanyard .id-header {
+  border-bottom-color: #e4b84f;
+}
+
+#idLanyard .school-logo {
+  color: #ffe49a;
+  background: #08613f;
+  border-color: #e4b84f;
+}
+
+#idLanyard .id-header strong,
+#idLanyard .id-name,
+#idLanyard .id-footer {
+  color: #08613f;
+}
+
+#idLanyard .id-header small,
+#idLanyard .id-course {
+  color: #94701d;
+}
+
+#idLanyard .id-photo {
+  background: #dce9df;
+  border-color: #e4b84f;
+}
+
+#idLanyard .id-line {
+  background: linear-gradient(
+    90deg,
+    #16a36b,
+    #e4b84f,
+    #16a36b
+  );
 }
