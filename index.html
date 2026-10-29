@@ -4,1063 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alecxis Cyrus Paloma | Portfolio</title>
-    <!-- Google Fonts for Modern Typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons for visual enhancement -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* ==========================================================================
-           1. CSS VARIABLES (DESIGN TOKENS)
-           ========================================================================== */
-        :root {
-            --bg-dark: #0a192f;           /* Main deep navy background */
-            --bg-card: #112240;           /* Slightly lighter navy for cards */
-            --bg-card-hover: #1d3557;     /* Hover state for cards */
-            --text-primary: #f8fafc;      /* Crisp white heading text */
-            --text-secondary: #94a3b8;    /* Muted slate text for body copy */
-            --accent-blue: #0070f3;       /* Vibrant primary accent blue */
-            --accent-cyan: #64ffda;       /* Vibrant cyan highlight color */
-            --accent-cyan-glow: rgba(100, 255, 218, 0.15);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-code: 'Fira Code', monospace;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --shadow-lg: 0 20px 30px -10px rgba(2, 12, 27, 0.7);
-        }
-
-        /* ==========================================================================
-           2. BASE STYLES & RESET
-           ========================================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background-color: var(--bg-dark);
-            color: var(--text-secondary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: #ffffff;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--text-primary);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            padding: 6rem 0;
-        }
-
-        /* Utility Section Titles */
-        .section-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .section-subtitle {
-            font-family: var(--font-code);
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.75rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-blue);
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(0, 112, 243, 0.39);
-        }
-
-        .btn-primary:hover {
-            background-color: #0051a8;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.54);
-            color: #ffffff;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--accent-cyan);
-            border: 1px solid var(--accent-cyan);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--accent-cyan-glow);
-            transform: translateY(-2px);
-            color: var(--accent-cyan);
-        }
-
-        /* ==========================================================================
-           3. NAVBAR SECTION
-           ========================================================================== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            background-color: rgba(10, 25, 47, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: var(--transition);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .navbar.scrolled {
-            height: 70px;
-            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .logo {
-            font-family: var(--font-code);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .logo span {
-            color: var(--accent-cyan);
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-cyan);
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ==========================================================================
-           4. HERO SECTION WITH STUDENT ID LANYARD
-           ========================================================================== */
-        .hero {
-            min-height: 100vh;
-            padding-top: 120px;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-text .eyebrow {
-            font-family: var(--font-code);
-            color: var(--accent-cyan);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-cyan);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px var(--accent-cyan);
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-text h1 span {
-            color: var(--accent-blue);
-        }
-
-        .hero-text h2 {
-            font-size: 1.75rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            max-width: 540px;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* ID Lanyard Container & Swing Animation */
-        .hero-right {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .id-scene {
-            perspective: 1000px;
-            transform-origin: top center;
-            transition: transform 0.1s ease-out;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .id-lace {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .lace-strap {
-            width: 32px;
-            height: 70px;
-            background: linear-gradient(90deg, #0f5228, #1b8a45, #0f5228);
-            border-radius: 4px 4px 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.5), 0 4px 8px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        .lace-strap::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.15) 4px, rgba(0,0,0,0.15) 8px);
-        }
-
-        .lace-clip {
-            width: 26px;
-            height: 26px;
-            background: linear-gradient(135deg, #cbd5e1, #64748b, #94a3b8);
-            border-radius: 4px;
-            margin-top: -2px;
-            border: 1px solid #475569;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-            position: relative;
-            z-index: 2;
-        }
-
-        .lace-clip::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 14px;
-            height: 14px;
-            border: 3px solid #64748b;
-            border-radius: 50%;
-        }
-
-        /* Authentic Colegio de Montalban ID Card Styling */
-        .student-id {
-            width: 290px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.8);
-            padding: 12px 14px 14px;
-            position: relative;
-            margin-top: 10px;
-            border: 3px solid #cbd5e1;
-            overflow: hidden;
-            color: #1e293b;
-            text-align: center;
-            font-family: var(--font-main);
-        }
-
-        .id-gloss {
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(115deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 30%, transparent 50%);
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .id-slot-hole {
-            width: 48px;
-            height: 8px;
-            background: #0f172a;
-            border-radius: 10px;
-            margin: 0 auto 10px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .id-cdm-header {
-            position: relative;
-            background: #ffffff;
-            padding-bottom: 6px;
-            margin-bottom: 8px;
-        }
-
-        .cdm-banner-bg {
-            background: linear-gradient(135deg, #005a2b 0%, #008744 100%);
-            padding: 6px 8px;
-            border-radius: 6px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cdm-banner-bg::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 100%;
-            height: 16px;
-            background: #facc15;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .cdm-logo-emblem {
-            width: 30px;
-            height: 30px;
-            background: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.65rem;
-            color: #005a2b;
-            border: 2px solid #facc15;
-            flex-shrink: 0;
-            z-index: 2;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .cdm-text-details {
-            z-index: 2;
-        }
-
-        .cdm-title {
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            color: #ffffff;
-            line-height: 1.1;
-            text-transform: uppercase;
-        }
-
-        .cdm-subtext {
-            font-size: 0.48rem;
-            color: #e2e8f0;
-            line-height: 1.1;
-            margin-top: 1px;
-        }
-
-        .id-photo-container {
-            width: 110px;
-            height: 125px;
-            margin: 6px auto 10px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            overflow: hidden;
-            background-color: #f1f5f9;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            position: relative;
-        }
-
-        .id-photo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .id-student-name {
-            font-size: 0.92rem;
-            font-weight: 800;
-            color: #0f172a;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-            line-height: 1.2;
-        }
-
-        .id-student-number {
-            font-family: var(--font-code);
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: #334155;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .id-course-banner {
-            background: linear-gradient(90deg, #f97316, #ea580c);
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 800;
-            padding: 5px 6px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            line-height: 1.25;
-            letter-spacing: 0.3px;
-            box-shadow: 0 2px 4px rgba(234, 88, 12, 0.3);
-            margin-bottom: 10px;
-        }
-
-        .id-card-footer {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            padding-top: 4px;
-            border-top: 2px solid #005a2b;
-            position: relative;
-        }
-
-        .id-footer-left {
-            text-align: left;
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #005a2b;
-            text-transform: uppercase;
-        }
-
-        .id-seal-emblem {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #008744 0%, #005a2b 100%);
-            border: 2px solid #facc15;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 0.48rem;
-            font-weight: 800;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            line-height: 1;
-            text-align: center;
-        }
-
-        /* ==========================================================================
-           5. ABOUT ME SECTION
-           ========================================================================== */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 1.25rem;
-            font-size: 1.05rem;
-        }
-
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .highlight-card {
-            background-color: var(--bg-card);
-            padding: 1.75rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .highlight-icon {
-            font-size: 2rem;
-            color: var(--accent-cyan);
-            margin-bottom: 1rem;
-        }
-
-        .highlight-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* ==========================================================================
-           6. SKILLS SECTION
-           ========================================================================== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .skill-card {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-md);
-            padding: 2rem 1.5rem;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px);
-            background-color: var(--bg-card-hover);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-card:hover::before {
-            opacity: 1;
-        }
-
-        .skill-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(100, 255, 218, 0.08);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--accent-cyan);
-            margin-bottom: 1.25rem;
-        }
-
-        .skill-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-card p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* ==========================================================================
-           7. PROJECTS SECTION
-           ========================================================================== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(100, 255, 218, 0.3);
-        }
-
-        .project-banner {
-            height: 180px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #0a192f 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            color: var(--accent-cyan);
-            font-size: 3.5rem;
-        }
-
-        .project-category {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: rgba(10, 25, 47, 0.85);
-            color: var(--accent-cyan);
-            font-family: var(--font-code);
-            font-size: 0.75rem;
-            padding: 0.3rem 0.75rem;
-            border-radius: 20px;
-            border: 1px solid rgba(100, 255, 218, 0.2);
-        }
-
-        .project-body {
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-body h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .project-body p {
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            font-family: var(--font-code);
-            font-size: 0.8rem;
-            color: var(--text-primary);
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-        }
-
-        .project-link {
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--text-primary);
-        }
-
-        .project-link:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* ==========================================================================
-           8. CONTACT SECTION
-           ========================================================================== */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
-            background-color: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .info-icon {
-            width: 48px;
-            height: 48px;
-            background-color: rgba(0, 112, 243, 0.15);
-            color: var(--accent-blue);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .info-details h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .info-details p, .info-details a {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .info-details a:hover {
-            color: var(--accent-cyan);
-        }
-
-        .contact-form-wrapper {
-            background-color: var(--bg-card);
-            padding: 2.25rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            background-color: var(--bg-dark);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            font-family: var(--font-main);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 0 3px var(--accent-cyan-glow);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-alert {
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            margin-bottom: 1.25rem;
-            display: none;
-            font-size: 0.9rem;
-        }
-
-        .form-alert.success {
-            display: block;
-            background-color: rgba(16, 185, 129, 0.15);
-            border: 1px solid #10b981;
-            color: #34d399;
-        }
-
-        /* ==========================================================================
-           9. FOOTER & BACK TO TOP
-           ========================================================================== */
-        .footer {
-            background-color: #060e1a;
-            padding: 3rem 0 2rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 1.25rem;
-        }
-
-        .social-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background-color: var(--bg-card);
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-
-        .social-btn:hover {
-            color: var(--accent-cyan);
-            border-color: var(--accent-cyan);
-            transform: translateY(-3px);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 45px;
-            height: 45px;
-            background-color: var(--accent-blue);
-            color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-            z-index: 900;
-            border: none;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-4px);
-            background-color: var(--accent-cyan);
-            color: var(--bg-dark);
-        }
-
-        /* ==========================================================================
-           10. SCROLL REVEAL ANIMATIONS
-           ========================================================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ==========================================================================
-           11. RESPONSIVE DESIGN (MEDIA QUERIES)
-           ========================================================================== */
-        @media (max-width: 992px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text p {
-                margin: 0 auto 2.5rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-right {
-                margin-top: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: calc(100vh - 80px);
-                background-color: var(--bg-card);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 2.5rem 2rem;
-                transition: var(--transition);
-                border-left: 1px solid var(--border-color);
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .hero-text h1 {
-                font-size: 2.75rem;
-            }
-
-            .hero-text h2 {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.85rem;
-            }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR SECTION -->
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
+    <!-- Header & Navigation Bar -->
+    <header class="header">
+        <nav class="nav-container">
             <a href="#home" class="logo">
-                <span>&lt;</span>Alecxis Cyrus Paloma<span>/&gt;</span>
+                <span>&lt;</span>Alecxis Cyrus<span>/&gt;</span>
             </a>
             
-            <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <div class="hero-text reveal">
-                <p class="eyebrow">
-                    <span class="status-dot"></span>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-badge">
+                    <span class="pulse-dot"></span>
                     COMPUTER ENGINEERING STUDENT
                 </p>
-
-                <h1>Hello, I'm <span>Alecxis Cyrus</span></h1>
-                <h2>Aspiring Computer Engineer &amp; Developer</h2>
-
-                <p>
+                <h1>Hello, I'm <span class="highlight">Alecxis Cyrus</span></h1>
+                <h2>Aspiring Computer Engineer & Developer</h2>
+                <p class="hero-desc">
                     I enjoy exploring computer systems, hardware-software integration, and web technologies. Building practical projects while continuously expanding my technical skills.
                 </p>
-
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
-                        View Projects <i class="fas fa-arrow-right"></i>
+                        View Projects <i class="fa-solid fa-arrow-down"></i>
                     </a>
                     <a href="#contact" class="btn btn-outline">
                         Get In Touch
@@ -1068,52 +60,28 @@
                 </div>
             </div>
 
-            <div class="hero-right">
-                <!-- Colegio de Montalban Student ID and lanyard -->
-                <div class="id-scene reveal" id="idLanyard" title="Click the ID to swing it">
-                    <div class="id-lace">
-                        <div class="lace-strap"></div>
-                        <div class="lace-clip"></div>
-
-                        <div class="student-id">
-                            <div class="id-gloss"></div>
-                            <div class="id-slot-hole"></div>
-
-                            <!-- Colegio de Montalban Header -->
-                            <div class="id-cdm-header">
-                                <div class="cdm-banner-bg">
-                                    <div class="cdm-logo-emblem">CdM</div>
-                                    <div class="cdm-text-details">
-                                        <div class="cdm-title">Colegio de Montalban</div>
-                                        <div class="cdm-subtext">Kasiglahan Village, San Jose, Montalban, Rizal</div>
-                                    </div>
-                                </div>
+            <div class="hero-visual">
+                <!-- Interactive Student ID Card -->
+                <div class="student-id-wrapper" title="Colegio de Montalban ID">
+                    <div class="student-id-card">
+                        <div class="id-header">
+                            <div class="school-logo-placeholder">CdM</div>
+                            <div class="school-info">
+                                <h3>Colegio de Montalban</h3>
+                                <p>San Jose, Montalban, Rizal</p>
                             </div>
-
-                            <!-- Student Photo -->
-                            <div class="id-photo-container">
-                                <img src="student-photo.jpg" alt="Alecxis Cyrus D. Paloma" onerror="this.src='https://placehold.co/300x350/005a2b/ffffff?text=Alecxis+Paloma'">
-                            </div>
-
-                            <!-- Name and Student Number -->
-                            <div class="id-student-name">ALECXIS CYRUS D. PALOMA</div>
-                            <div class="id-student-number">STUDENT NUMBER: 26-11853</div>
-
-                            <!-- Course Banner Box -->
-                            <div class="id-course-banner">
-                                Bachelor of Science in Computer Engineering
-                            </div>
-
-                            <!-- Card Footer Seals -->
-                            <div class="id-card-footer">
-                                <div class="id-footer-left">
-                                    Official Student ID<br>
-                                    <small style="color: #64748b;">Academic Year 2024-2026</small>
-                                </div>
-                                <div class="id-seal-emblem" title="Bayan ng Montalban • Lalawigan ng Rizal">
-                                    RIZAL
-                                </div>
-                            </div>
+                        </div>
+                        <div class="id-photo-container">
+                            <img src="student-photo.jpg" alt="Alecxis Cyrus D. Paloma" onerror="this.src='https://via.placeholder.com/120x150?text=Photo'">
+                        </div>
+                        <div class="id-details">
+                            <h4 class="id-name">ALECXIS CYRUS D. PALOMA</h4>
+                            <p class="id-number">STUDENT NO: 26-11853</p>
+                            <p class="id-course">Bachelor of Science in Computer Engineering</p>
+                        </div>
+                        <div class="id-footer">
+                            <span>Official Student ID</span>
+                            <span class="id-location">RIZAL</span>
                         </div>
                     </div>
                 </div>
@@ -1121,16 +89,16 @@
         </div>
     </section>
 
-    <!-- ABOUT ME SECTION -->
-    <section id="about">
+    <!-- About Me Section -->
+    <section id="about" class="section reveal">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-subtitle">01. Discovery</span>
-                <h2 class="section-title">About Me</h2>
+            <div class="section-title">
+                <span class="section-tag">01. Discovery</span>
+                <h2>About Me</h2>
             </div>
 
-            <div class="about-content">
-                <div class="about-text reveal">
+            <div class="about-grid">
+                <div class="about-text">
                     <p>
                         Hello! My name is <strong>Alecxis Cyrus Paloma</strong>. I am an enthusiastic college student passionate about computer engineering, web development, and technology. My journey started with a curiosity for how computer systems and web applications work behind the scenes.
                     </p>
@@ -1139,27 +107,21 @@
                     </p>
                 </div>
 
-                <div class="highlights-grid reveal">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
+                <div class="about-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                         <h3>Education</h3>
                         <p>Pursuing Bachelor of Science in Computer Engineering at Colegio de Montalban.</p>
                     </div>
 
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
                         <h3>Interests</h3>
-                        <p>Software Development, Embedded Systems, Hardware &amp; Web Technologies.</p>
+                        <p>Software Development, Embedded Systems, Hardware & Web Technologies.</p>
                     </div>
 
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-bullseye"></i></div>
                         <h3>Career Goals</h3>
                         <p>To become a versatile engineer creating innovative and efficient technology solutions.</p>
                     </div>
@@ -1168,140 +130,119 @@
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" style="background-color: rgba(17, 34, 64, 0.3);">
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-alt reveal">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-subtitle">02. Capabilities</span>
-                <h2 class="section-title">My Technical Skills</h2>
+            <div class="section-title">
+                <span class="section-tag">02. Capabilities</span>
+                <h2>My Technical Skills</h2>
             </div>
 
             <div class="skills-grid">
-                <!-- Skill Card 1 -->
-                <div class="skill-card reveal">
-                    <div class="skill-icon">
-                        <i class="fab fa-html5"></i>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
                     <h3>HTML5</h3>
                     <p>Semantic markup, accessible structure, and clean layout creation.</p>
                 </div>
 
-                <!-- Skill Card 2 -->
-                <div class="skill-card reveal">
-                    <div class="skill-icon">
-                        <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <h3>CSS3 &amp; Styling</h3>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                    <h3>CSS3 & Styling</h3>
                     <p>Flexbox, Grid layout, smooth animations, and responsive styling.</p>
                 </div>
 
-                <!-- Skill Card 3 -->
-                <div class="skill-card reveal">
-                    <div class="skill-icon">
-                        <i class="fab fa-js"></i>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
                     <h3>JavaScript</h3>
                     <p>ES6+ features, DOM manipulation, and dynamic user interactions.</p>
                 </div>
 
-                <!-- Skill Card 4 -->
-                <div class="skill-card reveal">
-                    <div class="skill-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-computer"></i></div>
                     <h3>Computer Systems</h3>
                     <p>Understanding computer architecture, hardware components, and logic concepts.</p>
                 </div>
 
-                <!-- Skill Card 5 -->
-                <div class="skill-card reveal">
-                    <div class="skill-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
                     <h3>Python Programming</h3>
                     <p>Basic scripting, logic building, and problem-solving fundamentals.</p>
                 </div>
 
-                <!-- Skill Card 6 -->
-                <div class="skill-card reveal">
-                    <div class="skill-icon">
-                        <i class="fab fa-git-alt"></i>
-                    </div>
-                    <h3>Git &amp; GitHub</h3>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
+                    <h3>Git & GitHub</h3>
                     <p>Version control management, code repositories, and project hosting.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
+    <!-- Projects Section -->
+    <section id="projects" class="section reveal">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-subtitle">03. Portfolio Showcase</span>
-                <h2 class="section-title">Featured Projects</h2>
+            <div class="section-title">
+                <span class="section-tag">03. Portfolio Showcase</span>
+                <h2>Featured Projects</h2>
             </div>
 
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <article class="project-card reveal">
-                    <div class="project-banner">
-                        <i class="fas fa-laptop-code"></i>
-                        <span class="project-category">Web App</span>
+                <article class="project-card">
+                    <div class="project-header-tag">
+                        <i class="fa-solid fa-window-maximize"></i>
+                        <span>Web App</span>
                     </div>
                     <div class="project-body">
                         <h3>Personal Portfolio Website</h3>
                         <p>A modern responsive portfolio featuring clean navigation, interactive elements, and an authentic Student ID Card display.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
+                        <div class="project-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="#home" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="https://github.com/alecxiscyruspaloma" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#home"><i class="fa-solid fa-globe"></i> Live Demo</a>
+                            <a href="https://github.com/alecxiscyruspaloma" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 2 -->
-                <article class="project-card reveal">
-                    <div class="project-banner">
-                        <i class="fas fa-user-graduate"></i>
-                        <span class="project-category">Console / Python</span>
+                <article class="project-card">
+                    <div class="project-header-tag">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span>Console / Python</span>
                     </div>
                     <div class="project-body">
                         <h3>Student Information System</h3>
                         <p>A Python application designed for managing student records, adding entries, viewing lists, and updating information.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">CRUD</span>
-                            <span class="tech-tag">Data Management</span>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>CRUD</span>
+                            <span>Data Management</span>
                         </div>
                         <div class="project-links">
-                            <a href="#contact" class="project-link"><i class="fas fa-info-circle"></i> Details</a>
-                            <a href="https://github.com/alecxiscyruspaloma" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#contact"><i class="fa-solid fa-circle-info"></i> Details</a>
+                            <a href="https://github.com/alecxiscyruspaloma" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
-                <article class="project-card reveal">
-                    <div class="project-banner">
-                        <i class="fas fa-gamepad"></i>
-                        <span class="project-category">Concept</span>
+                <article class="project-card">
+                    <div class="project-header-tag">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Concept</span>
                     </div>
                     <div class="project-body">
                         <h3>Interactive Educational App</h3>
                         <p>A web project concept focused on interactive learning through quizzes, visual feedback, and user engagement.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">UI/UX</span>
-                            <span class="tech-tag">HTML/CSS</span>
+                        <div class="project-tags">
+                            <span>JavaScript</span>
+                            <span>UI/UX</span>
+                            <span>HTML/CSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="#contact" class="project-link"><i class="fas fa-info-circle"></i> Details</a>
-                            <a href="https://github.com/alecxiscyruspaloma" target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#contact"><i class="fa-solid fa-circle-info"></i> Details</a>
+                            <a href="https://github.com/alecxiscyruspaloma" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
@@ -1309,262 +250,78 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" style="background-color: rgba(17, 34, 64, 0.3);">
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-alt reveal">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-subtitle">04. Get In Touch</span>
-                <h2 class="section-title">Contact Me</h2>
+            <div class="section-title">
+                <span class="section-tag">04. Get In Touch</span>
+                <h2>Contact Me</h2>
             </div>
 
-            <div class="contact-container">
-                <div class="contact-info reveal">
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="info-details">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
                             <h4>Email</h4>
                             <a href="mailto:alecxiscyruspaloma@example.com">alecxiscyruspaloma@example.com</a>
                         </div>
                     </div>
 
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="info-details">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
                             <h4>Location</h4>
                             <p>Montalban, Rizal, Philippines</p>
                         </div>
                     </div>
 
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="info-details">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                        <div>
                             <h4>GitHub Profile</h4>
                             <a href="https://github.com/alecxiscyruspaloma" target="_blank" rel="noopener">github.com/alecxiscyruspaloma</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="contact-form-wrapper reveal">
-                    <!-- Form submission feedback alert -->
-                    <div class="form-alert" id="form-alert">
-                        Message sent successfully! Thank you for reaching out.
-                    </div>
-
-                    <form id="contact-form">
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form">
                         <div class="form-group">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" id="name" class="form-input" placeholder="e.g. Juan Dela Cruz" required>
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required placeholder="Enter your name">
                         </div>
-
                         <div class="form-group">
-                            <label for="email" class="form-label">Your Email</label>
-                            <input type="email" id="email" class="form-input" placeholder="e.g. juan@example.com" required>
+                            <label for="email">Your Email</label>
+                            <input type="email5" id="email" required placeholder="Enter your email">
                         </div>
-
                         <div class="form-group">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" class="form-input" placeholder="Project Inquiry / Hello" required>
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" required placeholder="Write your message here..."></textarea>
                         </div>
-
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" class="form-textarea" placeholder="Write your message here..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            Send Message <i class="fas fa-paper-plane"></i>
-                        </button>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                     </form>
+                    <div id="formSuccess" class="form-success hidden">
+                        <i class="fa-solid fa-circle-check"></i> Message sent successfully! Thank you for reaching out.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
-            <div class="footer-socials">
-                <a href="https://github.com/alecxiscyruspaloma" target="_blank" class="social-btn" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="#" target="_blank" class="social-btn" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" target="_blank" class="social-btn" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
+            <div class="social-links">
+                <a href="https://github.com/alecxiscyruspaloma" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
             </div>
-            <p>&copy; <span id="current-year"></span> Alecxis Cyrus Paloma. Built with Vanilla Web Tech.</p>
+            <p>&copy; <span id="currentYear"></span> Alecxis Cyrus Paloma. Built with Vanilla Web Tech.</p>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- ==========================================================================
-       JAVASCRIPT FUNCTIONALITY
-       ========================================================================== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // 1. Dynamic Footer Year
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-
-            // 2. Mobile Navigation Toggle (Hamburger Menu)
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                    const icon = hamburger.querySelector('i');
-                    if (icon) {
-                        icon.classList.toggle('fa-bars');
-                        icon.classList.toggle('fa-times');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('active');
-                        const icon = hamburger.querySelector('i');
-                        if (icon) {
-                            icon.classList.add('fa-bars');
-                            icon.classList.remove('fa-times');
-                        }
-                    });
-                });
-            }
-
-            // 3. Navbar Sticky & Back-to-Top Button
-            const navbar = document.getElementById('navbar');
-            const backToTopBtn = document.getElementById('back-to-top');
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-
-                if (window.scrollY > 400) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-
-            if (backToTopBtn) {
-                backToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-
-            // 4. Interactive Lanyard Swing Effect on Click
-            const idLanyard = document.getElementById('idLanyard');
-            if (idLanyard) {
-                let swinging = false;
-                idLanyard.addEventListener('click', () => {
-                    if (swinging) return;
-                    swinging = true;
-                    
-                    idLanyard.style.transition = 'transform 0.2s ease-in-out';
-                    idLanyard.style.transform = 'rotate(12deg)';
-
-                    setTimeout(() => {
-                        idLanyard.style.transform = 'rotate(-10deg)';
-                    }, 200);
-
-                    setTimeout(() => {
-                        idLanyard.style.transform = 'rotate(6deg)';
-                    }, 400);
-
-                    setTimeout(() => {
-                        idLanyard.style.transform = 'rotate(-3deg)';
-                    }, 600);
-
-                    setTimeout(() => {
-                        idLanyard.style.transform = 'rotate(0deg)';
-                        swinging = false;
-                    }, 800);
-                });
-            }
-
-            // 5. Scroll Active Link Highlighting
-            const sections = document.querySelectorAll('section');
-
-            window.addEventListener('scroll', () => {
-                let currentSection = '';
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 120;
-                    const sectionHeight = section.offsetHeight;
-                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-
-            // 6. Scroll Reveal Animations
-            const revealElements = document.querySelectorAll('.reveal');
-
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                root: null,
-                threshold: 0.15
-            });
-
-            revealElements.forEach(element => {
-                revealObserver.observe(element);
-            });
-
-            // 7. Contact Form Handler
-            const contactForm = document.getElementById('contact-form');
-            const formAlert = document.getElementById('form-alert');
-
-            if (contactForm && formAlert) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-
-                    formAlert.classList.add('success');
-                    formAlert.textContent = "Salamat! Ang iyong mensahe ay naipadala na.";
-
-                    contactForm.reset();
-
-                    setTimeout(() => {
-                        formAlert.classList.remove('success');
-                    }, 5000);
-                });
-            }
-        });
-    </script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
