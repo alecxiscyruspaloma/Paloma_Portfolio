@@ -559,3 +559,227 @@ button, a { -webkit-tap-highlight-color: transparent; }
     animation-duration: 0.3s;
   }
 }
+
+/* REALISTIC BLUE STUDENT ID */
+.id-scene {
+  width: 280px;
+  margin: 20px auto;
+  perspective: 1000px;
+  position: relative;
+  z-index: 5;
+}
+
+.id-lace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  cursor: pointer;
+}
+
+.lace-strap {
+  width: 42px;
+  height: 145px;
+  margin: 0 auto;
+  background: repeating-linear-gradient(
+    0deg,
+    #123c79 0px,
+    #123c79 16px,
+    #2563b8 16px,
+    #2563b8 32px
+  );
+  border: 1px solid #0b2855;
+  border-radius: 5px;
+  box-shadow: inset 2px 0 4px #ffffff30,
+              3px 4px 8px #0003;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lace-strap span {
+  color: white;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-shadow: 0 1px 2px #0008;
+}
+
+.lace-clip {
+  width: 32px;
+  height: 34px;
+  margin-top: -3px;
+  background: linear-gradient(
+    90deg,
+    #64748b,
+    #f8fafc,
+    #94a3b8,
+    #475569
+  );
+  border: 2px solid #64748b;
+  border-radius: 8px 8px 12px 12px;
+  box-shadow: 0 3px 6px #0004;
+  position: relative;
+}
+
+.lace-clip::after {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border: 3px solid #64748b;
+  border-radius: 50%;
+  left: 6px;
+  bottom: -11px;
+  background: transparent;
+}
+
+.student-id {
+  width: 245px;
+  min-height: 355px;
+  margin-top: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid #dbeafe;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff, #eaf3ff 75%, #dbeafe);
+  box-shadow:
+    0 15px 30px #0004,
+    0 0 0 2px #93c5fd,
+    inset 0 0 12px #ffffff;
+  color: #102b52;
+  text-align: center;
+}
+
+.id-gloss {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    #ffffff60 0%,
+    transparent 28%,
+    transparent 70%,
+    #ffffff35 100%
+  );
+}
+
+.id-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px 4px;
+  margin: -12px -12px 12px;
+  background: linear-gradient(120deg, #102f65, #2563b8);
+  color: white;
+  border-bottom: 4px solid #60a5fa;
+  position: relative;
+}
+
+.id-header strong {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.id-header small {
+  display: block;
+  font-size: 8px;
+  margin-top: 3px;
+  letter-spacing: 1px;
+}
+
+.school-logo {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.id-photo {
+  width: 112px;
+  height: 130px;
+  margin: 0 auto 12px;
+  padding: 4px;
+  background: white;
+  border: 2px solid #93a9c8;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px #0002;
+  overflow: hidden;
+}
+
+.id-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+}
+
+.id-name {
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 8px 0;
+  color: #12366c;
+}
+
+.id-course {
+  padding: 8px 5px;
+  background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+}
+
+.id-line {
+  height: 1px;
+  background: #9caec8;
+  margin-top: 18px;
+}
+
+.id-footer {
+  padding-top: 9px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #345781;
+}
+
+/* Moves only when clicked */
+.id-lace.swing {
+  animation: idSwing 1.2s ease-in-out;
+}
+
+@keyframes idSwing {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(9deg); }
+  40%  { transform: rotate(-7deg); }
+  60%  { transform: rotate(4deg); }
+  80%  { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@media (max-width: 600px) {
+  .id-scene {
+    width: 260px;
+  }
+
+  .student-id {
+    width: 235px;
+  }
+}
