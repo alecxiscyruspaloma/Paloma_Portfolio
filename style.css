@@ -1315,3 +1315,109 @@ ul {
     from { transform: scale(0.85); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+/* --- HEADER PROFILE TRIGGER & POPUP MODAL STYLING --- */
+.nav-profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.nav-profile-trigger:hover {
+    background-color: rgba(6, 182, 212, 0.1);
+    border-color: rgba(6, 182, 212, 0.3);
+}
+
+.nav-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+}
+
+.nav-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: 0.3px;
+}
+
+/* Modal Overlay */
+.id-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 5, 8, 0.88);
+    backdrop-filter: blur(12px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.id-popup-overlay.active {
+    display: flex;
+    animation: fadeInModal 0.3s ease forwards;
+}
+
+.id-popup-content {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(6, 182, 212, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.id-popup-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.id-popup-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--text-muted);
+    font-size: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.id-popup-close:hover {
+    color: var(--accent-cyan);
+}
+
+.popup-id-card {
+    transform: scale(1.05);
+    margin: 1rem 0;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile adjustments para sa pangalan sa header */
+@media (max-width: 768px) {
+    .nav-name {
+        display: none; /* Magiging maliit na avatar lang sa maliit na screen para hindi masikip */
+    }
+}
