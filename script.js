@@ -176,4 +176,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         startSlideTimer();
     }
+
+    // 7. Artwork Lightbox (Expand Image on Click - Naka-loob na sa tamang block)
+    const lightboxModal = document.getElementById('artworkLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img) {
+            img.style.cursor = 'pointer'; 
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (slide.classList.contains('active')) {
+                    lightboxImg.src = img.src;
+                    lightboxModal.classList.add('active');
+                }
+            });
+        }
+    });
+
+    if (lightboxModal) {
+        lightboxModal.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
+        });
+    }
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
+        });
+    }
 });
