@@ -92,33 +92,23 @@ ul {
     color: var(--accent-blue);
 }
 
-.nav-links {
-    display: flex;
-    gap: 2.5rem;
-}
-
+/* --- HEADER NAVIGATION HOVER & GLOW EFFECTS --- */
 .nav-links a {
-    font-size: 1.05rem; /* Mas pinakinis at pinalaki */
+    font-size: 1.05rem;
     font-weight: 500;
     color: var(--text-muted);
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
 }
 
+/* Kapag tinututukan ng mouse (Hover effect) */
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    color: var(--accent-cyan);
+    transform: scale(1.12); /* Papalakihin nang kaunti ang text */
+    text-shadow: 0 0 12px rgba(6, 182, 212, 0.7), 0 0 25px rgba(59, 130, 246, 0.5); /* Iilaw / glowing neon effect */
 }
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-main);
-    font-size: 1.6rem;
-    cursor: pointer;
-}
-
 /* --- HERO SECTION --- */
 .hero-section {
     min-height: 100vh;
