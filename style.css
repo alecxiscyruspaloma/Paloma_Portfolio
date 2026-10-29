@@ -1060,8 +1060,8 @@ ul {
 
 /* --- LAKING HEADER PROFILE AVATAR --- */
 .header-avatar {
-    width: 54px;   /* Pinalaki mula 42px patungong 54px */
-    height: 54px;  /* Pinalaki rin para maging perpektong bilog */
+    width: 64px;  
+    height: 64px;  
     border-radius: 50%;
     overflow: hidden;
     border: 2.5px solid var(--accent-cyan);
