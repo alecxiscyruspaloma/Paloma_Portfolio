@@ -208,50 +208,81 @@
         </div>
     </section>
 
-<!-- Projects & Artworks Section -->
+<!-- Projects Section -->
     <section id="projects" class="section reveal">
         <div class="container">
             <div class="section-title">
-                <span class="section-tag">03. Creative Works</span>
-                <h2>Artworks & Creations</h2>
+                <span class="section-tag">03. Featured Works</span>
+                <h2>Projects & Creations</h2>
             </div>
 
-            <div class="artwork-intro">
-                <p>Aside from coding and computer engineering, I express my creativity through drawing and visual design. Here are some of my artwork creations:</p>
-            </div>
-
-            <!-- Artwork Image Gallery Grid -->
-            <div class="artwork-grid">
-                <!-- Artwork 1 -->
-                <div class="artwork-card">
-                    <div class="artwork-img-box">
-                        <img src="artwork1.jpg" alt="Artwork 1" onerror="this.src='https://placehold.co/600x400/101728/3b82f6?text=Artwork+1'">
+            <div class="projects-grid">
+                <!-- Project 1: Personal Portfolio Website -->
+                <div class="project-card">
+                    <div class="project-header-tag">
+                        <i class="fa-solid fa-laptop-code"></i> Web Development
                     </div>
-                    <div class="artwork-info">
-                        <h3>Digital Sketch / Artwork 1</h3>
-                        <p>Creative drawing showcasing visual design and detail.</p>
+                    <div class="project-body">
+                        <h3>Personal Portfolio & Interactive ID</h3>
+                        <p>A modern, responsive personal website featuring dark tech aesthetic, animated glowing background effects, dynamic project showcases, and a realistic 3D interactive Colegio de Montalban Student ID card.</p>
+                        <div class="project-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>GitHub Pages</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alecxiscyruspaloma.github.io/Paloma_Portfolio/" target="_blank">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Artwork 2 -->
-                <div class="artwork-card">
-                    <div class="artwork-img-box">
-                        <img src="artwork2.jpg" alt="Artwork 2" onerror="this.src='https://placehold.co/600x400/101728/06b6d4?text=Artwork+2'">
+                <!-- Project 2: Artworks & Creative Gallery Carousel -->
+                <div class="project-card artwork-carousel-card">
+                    <div class="project-header-tag">
+                        <i class="fa-solid fa-palette"></i> Creative Showcase
                     </div>
-                    <div class="artwork-info">
-                        <h3>Illustration / Artwork 2</h3>
-                        <p>Concept art focusing on character and structural design.</p>
-                    </div>
-                </div>
+                    <div class="project-body">
+                        <h3>Artwork Gallery</h3>
+                        <p>A collection of my digital drawings, sketches, and visual designs showcasing creativity and artistic skills.</p>
+                        
+                        <!-- Image Carousel / Slider Container -->
+                        <div class="carousel-container">
+                            <div class="carousel-slides" id="carouselSlides">
+                                <!-- Slide 1 -->
+                                <div class="carousel-slide active">
+                                    <img src="artwork1.jpg" alt="Artwork 1" onerror="this.src='https://placehold.co/600x400/101728/3b82f6?text=Artwork+1'">
+                                    <div class="slide-caption">Artwork #1: Creative Digital Sketch</div>
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="carousel-slide">
+                                    <img src="artwork2.jpg" alt="Artwork 2" onerror="this.src='https://placehold.co/600x400/101728/06b6d4?text=Artwork+2'">
+                                    <div class="slide-caption">Artwork #2: Concept Design</div>
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="carousel-slide">
+                                    <img src="artwork3.jpg" alt="Artwork 3" onerror="this.src='https://placehold.co/600x400/101728/8b5cf6?text=Artwork+3'">
+                                    <div class="slide-caption">Artwork #3: Visual Artwork</div>
+                                </div>
+                            </div>
 
-                <!-- Artwork 3 -->
-                <div class="artwork-card">
-                    <div class="artwork-img-box">
-                        <img src="artwork3.jpg" alt="Artwork 3" onerror="this.src='https://placehold.co/600x400/101728/8b5cf6?text=Artwork+3'">
-                    </div>
-                    <div class="artwork-info">
-                        <h3>Creative Design / Artwork 3</h3>
-                        <p>Visual experimentation with shading and perspective.</p>
+                            <!-- Carousel Navigation Buttons -->
+                            <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous Slide">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next Slide">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                            <!-- Carousel Dots Indicator -->
+                            <div class="carousel-dots" id="carouselDots">
+                                <span class="dot active" data-index="0"></span>
+                                <span class="dot" data-index="1"></span>
+                                <span class="dot" data-index="2"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
