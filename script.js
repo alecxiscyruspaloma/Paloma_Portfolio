@@ -29,102 +29,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 // 2. Interactive Lanyard / Student ID Realistic Swing & Hover Physics
-    const idLanyard = document.getElementById('idLanyard');
-    if (idLanyard) {
-        let isSwinging = false;
-        
-        // Click to swing physics animation
-        idLanyard.addEventListener('click', () => {
-            if (isSwinging) return;
-            isSwinging = true;
+    const idLanyard = document.getElementById('idLanyard');
+    if (idLanyard) {
+        let isSwinging = false;
+        
+        // Click to swing physics animation
+        idLanyard.addEventListener('click', () => {
+            if (isSwinging) return;
+            isSwinging = true;
 
-            const swingFrames = [
-                { rotate: '18deg', scale: '0.98' },
-                { rotate: '-15deg', scale: '1' },
-                { rotate: '11deg', scale: '1' },
-                { rotate: '-7deg', scale: '1' },
-                { rotate: '4deg', scale: '1' },
-                { rotate: '-2deg', scale: '1' },
-                { rotate: '0deg', scale: '1' }
-            ];
+            const swingFrames = [
+                { rotate: '18deg', scale: '0.98' },
+                { rotate: '-15deg', scale: '1' },
+                { rotate: '11deg', scale: '1' },
+                { rotate: '-7deg', scale: '1' },
+                { rotate: '4deg', scale: '1' },
+                { rotate: '-2deg', scale: '1' },
+                { rotate: '0deg', scale: '1' }
+            ];
 
-            let delay = 0;
-            swingFrames.forEach((frame, index) => {
-                setTimeout(() => {
-                    idLanyard.style.transition = 'transform 0.25s cubic-bezier(0.36, 0.07, 0.19, 0.97)';
-                    idLanyard.style.transform = `rotate(${frame.rotate}) scale(${frame.scale})`;
-                    
-                    if (index === swingFrames.length - 1) {
-                        setTimeout(() => {
-                            isSwinging = false;
-                        }, 250);
-                    }
-                }, delay);
-                delay += 220;
-            });
-        });
+            let delay = 0;
+            swingFrames.forEach((frame, index) => {
+                setTimeout(() => {
+                    idLanyard.style.transition = 'transform 0.25s cubic-bezier(0.36, 0.07, 0.19, 0.97)';
+                    idLanyard.style.transform = `rotate(${frame.rotate}) scale(${frame.scale})`;
+                    
+                    if (index === swingFrames.length - 1) {
+                        setTimeout(() => {
+                            isSwinging = false;
+                        }, 250);
+                    }
+                }, delay);
+                delay += 220;
+            });
+        });
 
-        // 3D Mouse Hover Tilt Effect
-        idLanyard.addEventListener('mousemove', (e) => {
-            const rect = idLanyard.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            const rotateX = (-y / 10);
-            const rotateY = (x / 10);
-            
-            if (!isSwinging) {
-                idLanyard.style.transition = 'transform 0.05s ease-out';
-                idLanyard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            }
-        });
+        // 3D Mouse Hover Tilt Effect
+        idLanyard.addEventListener('mousemove', (e) => {
+            const rect = idLanyard.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const rotateX = (-y / 10);
+            const rotateY = (x / 10);
+            
+            if (!isSwinging) {
+                idLanyard.style.transition = 'transform 0.05s ease-out';
+                idLanyard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+        });
 
-        // Reset kapag lumabas ang mouse
-        idLanyard.addEventListener('mouseleave', () => {
-            if (!isSwinging) {
-                idLanyard.style.transition = 'transform 0.5s ease-in-out';
-                idLanyard.style.transform = 'rotateX(0deg) rotateY(0deg) rotate(0deg)';
-            }
-        });
-    }
-// 2. Interactive Lanyard / Student ID Spring Bounce Effect
-    const idLanyard = document.getElementById('idLanyard');
-    if (idLanyard) {
-        idLanyard.addEventListener('click', () => {
-            // Kung kasalukuyan pang nagba-bounce, huwag munang pansinin
-            if (idLanyard.classList.contains('bounce-active')) return;
-
-            // Idagdag ang animation class
-            idLanyard.classList.add('bounce-active');
-
-            // Alisin ang class pagkalipas ng 850ms para pwede na ulit pindutin
-            setTimeout(() => {
-                idLanyard.classList.remove('bounce-active');
-            }, 850);
-        });
-
-        // 3D Mouse Hover Tilt Effect (Hindi maaapektuhan ang bounce)
-        idLanyard.addEventListener('mousemove', (e) => {
-            if (idLanyard.classList.contains('bounce-active')) return;
-
-            const rect = idLanyard.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            const rotateX = (-y / 10);
-            const rotateY = (x / 10);
-            
-            idLanyard.style.transition = 'transform 0.05s ease-out';
-            idLanyard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        idLanyard.addEventListener('mouseleave', () => {
-            if (!idLanyard.classList.contains('bounce-active')) {
-                idLanyard.style.transition = 'transform 0.5s ease-in-out';
-                idLanyard.style.transform = 'rotateX(0deg) rotateY(0deg) rotate(0deg)';
-            }
-        });
-    }
+        // Reset kapag lumabas ang mouse
+        idLanyard.addEventListener('mouseleave', () => {
+            if (!isSwinging) {
+                idLanyard.style.transition = 'transform 0.5s ease-in-out';
+                idLanyard.style.transform = 'rotateX(0deg) rotateY(0deg) rotate(0deg)';
+            }
+        });
+    }
     
     // 3. Smooth Scroll Reveal Animation (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal');
