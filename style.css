@@ -92,7 +92,14 @@ ul {
     color: var(--accent-blue);
 }
 
-/* --- HEADER NAVIGATION HOVER & GLOW EFFECTS --- */
+/* Siguraduhing row o pahiga ang mga nav links sa desktop */
+.nav-links {
+    display: flex;
+    flex-direction: row; /* Pabalik sa pahiga */
+    align-items: center;
+    gap: 2.5rem;
+}
+
 .nav-links a {
     font-size: 1.05rem;
     font-weight: 500;
@@ -102,12 +109,21 @@ ul {
     display: inline-block;
 }
 
-/* Kapag tinututukan ng mouse (Hover effect) */
+/* Hover at Glow Effect na lumalaki at umiilaw */
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--accent-cyan);
-    transform: scale(1.12); /* Papalakihin nang kaunti ang text */
-    text-shadow: 0 0 12px rgba(6, 182, 212, 0.7), 0 0 25px rgba(59, 130, 246, 0.5); /* Iilaw / glowing neon effect */
+    transform: scale(1.12);
+    text-shadow: 0 0 12px rgba(6, 182, 212, 0.7), 0 0 25px rgba(59, 130, 246, 0.5);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.6rem;
+    cursor: pointer;
 }
 /* --- HERO SECTION --- */
 .hero-section {
