@@ -221,3 +221,123 @@ button, a { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Swinging Student ID */
+.id-scene {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  perspective: 800px;
+}
+
+.id-lace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  animation: idSwing 3.8s ease-in-out infinite alternate;
+}
+
+.lace-strap {
+  width: 18px;
+  height: 100px;
+  background: linear-gradient(90deg, #173d83, #4285f4, #173d83);
+  border-radius: 5px;
+  border: 2px solid #173d83;
+}
+
+.lace-clip {
+  width: 28px;
+  height: 18px;
+  margin-top: -2px;
+  border: 4px solid #aeb7c5;
+  border-radius: 5px;
+  background: #e8edf5;
+}
+
+.student-id {
+  width: 210px;
+  min-height: 290px;
+  margin-top: 5px;
+  padding: 12px;
+  text-align: center;
+  background: linear-gradient(145deg, #ffffff, #eaf1ff);
+  border: 2px solid #b7c9e8;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.id-header {
+  padding: 8px 4px;
+  margin: -12px -12px 12px;
+  background: #173d83;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.id-photo {
+  width: 105px;
+  height: 115px;
+  margin: 0 auto 12px;
+  overflow: hidden;
+  border: 3px solid #d5e2fa;
+  border-radius: 7px;
+  background: #dce7f8;
+}
+
+.id-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.id-name {
+  color: #173d83;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.id-course {
+  margin-top: 6px;
+  color: #4b5d78;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.id-line {
+  height: 2px;
+  margin: 12px 0 8px;
+  background: #c5d5ef;
+}
+
+.id-footer {
+  color: #62718a;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+@keyframes idSwing {
+  from { transform: rotate(-7deg); }
+  to { transform: rotate(7deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .id-lace {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .student-id {
+    width: 175px;
+    min-height: 260px;
+  }
+
+  .lace-strap {
+    height: 70px;
+  }
+}
