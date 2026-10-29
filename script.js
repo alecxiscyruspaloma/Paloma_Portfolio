@@ -74,3 +74,29 @@ if (idLanyard) {
     idLanyard.classList.remove("swing");
   });
 }
+
+/* Click to swing the student ID */
+const idLanyard = document.getElementById("idLanyard");
+
+if (idLanyard) {
+  idLanyard.addEventListener("click", () => {
+    const lace = idLanyard.querySelector(".id-lace");
+
+    if (!lace) return;
+
+    lace.classList.remove("swing");
+
+    // Restart the animation
+    void lace.offsetWidth;
+
+    lace.classList.add("swing");
+  });
+
+  const lace = idLanyard.querySelector(".id-lace");
+
+  if (lace) {
+    lace.addEventListener("animationend", () => {
+      lace.classList.remove("swing");
+    });
+  }
+}
