@@ -28,23 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-  // 2. Interactive Lanyard / Student ID Spring Bounce Effect
+    // 2. Interactive Lanyard / Student ID Spring Bounce Effect
     const idLanyard = document.getElementById('idLanyard');
     if (idLanyard) {
         idLanyard.addEventListener('click', () => {
-            // Kung kasalukuyan pang nagba-bounce, huwag munang pansinin
             if (idLanyard.classList.contains('bounce-active')) return;
-
-            // Idagdag ang animation class para mag-bounce/swing
             idLanyard.classList.add('bounce-active');
-
-            // Alisin ang class pagkalipas ng 850ms para pwede na ulit pindutin
             setTimeout(() => {
                 idLanyard.classList.remove('bounce-active');
             }, 850);
         });
 
-        // 3D Mouse Hover Tilt Effect (Hindi maaapektuhan ang bounce)
+        // 3D Mouse Hover Tilt Effect
         idLanyard.addEventListener('mousemove', (e) => {
             if (idLanyard.classList.contains('bounce-active')) return;
 
@@ -85,13 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(element);
     });
 
-    // 4. Contact Form Submission Simulation
+    // 4. Contact Form Simulation
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
 
     if (contactForm && formSuccess) {
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent page reload
+            e.preventDefault();
 
             contactForm.style.display = 'none';
             formSuccess.classList.remove('hidden');
@@ -109,89 +104,76 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
-});
-// --- AUTO-PLAY & INTERACTIVE ARTWORK CAROUSEL ---
-document.addEventListener('DOMContentLoaded', () => {
+
+    // 6. Auto-Play & Interactive Artwork Carousel
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const container = document.querySelector('.carousel-container');
 
-    if (!slides.length) return;
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        let slideInterval;
 
-    let currentSlide = 0;
-    let slideInterval;
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
 
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
+            currentSlide = (index + slides.length) % slides.length;
 
-        currentSlide = (index + slides.length) % slides.length;
-
-        slides[currentSlide].classList.add('active');
-        if (dots[currentSlide]) {
-            dots[currentSlide].classList.add('active');
+            slides[currentSlide].classList.add('active');
+            if (dots[currentSlide]) {
+                dots[currentSlide].classList.add('active');
+            }
         }
-    }
 
-    function nextSlide() {
-        showSlide(currentSlide + 1);
-    }
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
 
-    function prevSlide() {
-        showSlide(currentSlide - 1);
-    }
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            nextSlide();
-            resetTimer();
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextSlide();
+                resetTimer();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                prevSlide();
+                resetTimer();
+            });
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showSlide(index);
+                resetTimer();
+            });
         });
-    }
 
-    if (prevBtn) {
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            prevSlide();
-            resetTimer();
-        });
-    }
+        function startSlideTimer() {
+            slideInterval = setInterval(nextSlide, 4000); // 4 seconds bago mag-slide nang kusa
+        }
 
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', (e) => {
-            e.stopPropagation();
-            showSlide(index);
-            resetTimer();
-        });
-    });
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startSlideTimer();
+        }
 
-    // --- AUTO-PLAY SLIDESHOW ---
-    function startSlideTimer() {
-        slideInterval = setInterval(nextSlide, 4000); // 4000ms = 4 seconds bago lumipat
-    }
+        if (container) {
+            container.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            container.addEventListener('mouseleave', () => startSlideTimer());
+        }
 
-    function resetTimer() {
-        clearInterval(slideInterval);
         startSlideTimer();
     }
-
-    if (container) {
-        container.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        container.addEventListener('mouseleave', () => startSlideTimer());
-    }
-
-    startSlideTimer();
 });
-.carousel-btn, .carousel-dots, .dot {
-    pointer-events: auto !important;
-    z-index: 20;
-}
-
-.carousel-slide {
-    pointer-events: none;
-}
-.carousel-slide.active {
-    pointer-events: auto;
-}
