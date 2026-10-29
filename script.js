@@ -65,10 +65,7 @@ const idLanyard = document.getElementById("idLanyard");
 
 if (idLanyard) {
   idLanyard.addEventListener("click", () => {
-    idLanyard.classList.remove("swing");
-
-    // Restart the animation every time it is clicked
-    void idLanyard.offsetWidth;
+    if (idLanyard.classList.contains("swing")) return;
 
     idLanyard.classList.add("swing");
   });
@@ -77,4 +74,3 @@ if (idLanyard) {
     idLanyard.classList.remove("swing");
   });
 }
-
