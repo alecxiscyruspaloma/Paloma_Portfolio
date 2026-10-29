@@ -1,88 +1,152 @@
+document.addEventListener('DOMContentLoaded', () => {
 
-/* Mobile navigation */
-const menuToggle = document.querySelector("#menu-toggle");
-const navLinks = document.querySelector("#nav-links");
+    // 1. Dynamic Footer Year
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
-  });
+    // 2. Mobile Navigation Toggle (Hamburger Menu)
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open navigation menu");
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+    }
+
+    // 3. Navbar Sticky & Back-to-Top Button
+    const navbar = document.getElementById('navbar');
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
     });
-  });
-}
 
-/* Keep reveal elements visible */
-document.querySelectorAll(".reveal").forEach((element) => {
-  element.classList.add("visible");
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // 4. Interactive Lanyard Swing Effect on Click
+    const idLanyard = document.getElementById('idLanyard');
+    if (idLanyard) {
+        let swinging = false;
+        idLanyard.addEventListener('click', () => {
+            if (swinging) return;
+            swinging = true;
+            
+            idLanyard.style.transition = 'transform 0.2s ease-in-out';
+            idLanyard.style.transform = 'rotate(12deg)';
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(-10deg)';
+            }, 200);
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(6deg)';
+            }, 400);
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(-3deg)';
+            }, 600);
+
+            setTimeout(() => {
+                idLanyard.style.transform = 'rotate(0deg)';
+                swinging = false;
+            }, 800);
+        });
+    }
+
+    // 5. Scroll Active Link Highlighting
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+        let currentSection = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // 6. Scroll Reveal Animations
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15
+    });
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
+    // 7. Contact Form Handler
+    const contactForm = document.getElementById('contact-form');
+    const formAlert = document.getElementById('form-alert');
+
+    if (contactForm && formAlert) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            formAlert.classList.add('success');
+            formAlert.textContent = "Salamat! Ang iyong mensahe ay naipadala na.";
+
+            contactForm.reset();
+
+            setTimeout(() => {
+                formAlert.classList.remove('success');
+            }, 5000);
+        });
+    }
 });
-
-/* Automatic footer year */
-const yearElement = document.querySelector("#year");
-
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
-
-/* Contact form: prepares an email */
-const contactForm = document.querySelector("#contact-form");
-const formNote = document.querySelector("#form-note");
-
-/* Replace this with your own email address */
-const portfolioEmail = "your.email@example.com";
-
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const name = document.querySelector("#name")?.value.trim() || "";
-    const email = document.querySelector("#email")?.value.trim() || "";
-    const message = document.querySelector("#message")?.value.trim() || "";
-
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-
-    if (portfolioEmail === "your.email@example.com") {
-      if (formNote) {
-        formNote.textContent =
-          "Please update the email address in script.js before using this form.";
-      }
-      return;
-    }
-
-    if (formNote) {
-      formNote.textContent = "Opening your default email app...";
-    }
-
-    window.location.href =
-      `mailto:${portfolioEmail}?subject=${subject}&body=${body}`;
-  });
-}
-
-/* Click the student ID to make it swing */
-const idLanyard = document.querySelector("#idLanyard");
-const idLace = idLanyard?.querySelector(".id-lace");
-
-if (idLace) {
-  idLanyard.addEventListener("click", () => {
-    if (idLace.classList.contains("swing")) return;
-
-    idLace.classList.add("swing");
-  });
-
-  idLace.addEventListener("animationend", () => {
-    idLace.classList.remove("swing");
-  });
-}
