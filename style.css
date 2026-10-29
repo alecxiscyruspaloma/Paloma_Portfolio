@@ -1252,3 +1252,16 @@ ul {
     box-shadow: 0 0 10px var(--accent-cyan);
     transform: scale(1.3);
 }
+/* --- ARTWORK CAROUSEL CLICKABILITY FIX --- */
+.carousel-btn, .carousel-dots, .dot {
+    pointer-events: auto !important;
+    z-index: 20;
+}
+
+.carousel-slide {
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    pointer-events: auto;
+}
