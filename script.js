@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
     // 3. Smooth Scroll Reveal Animation (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal');
 
