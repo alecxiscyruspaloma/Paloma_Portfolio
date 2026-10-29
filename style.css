@@ -341,3 +341,56 @@ button, a { -webkit-tap-highlight-color: transparent; }
     height: 70px;
   }
 }
+
+/* School ID and Lanyard */
+.id-lanyard {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transform-origin: top center;
+}
+
+.id-lanyard img {
+  width: 130px;
+  max-width: 45%;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Click animation */
+.id-lanyard.swing {
+  animation: swingID 0.8s ease-in-out;
+}
+
+@keyframes swingID {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(8deg);
+  }
+
+  50% {
+    transform: rotate(-8deg);
+  }
+
+  75% {
+    transform: rotate(4deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Mobile screen */
+@media (max-width: 768px) {
+  .id-lanyard img {
+    width: 100px;
+    height: 180px;
+  }
+}
