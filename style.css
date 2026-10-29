@@ -270,50 +270,71 @@ ul {
     transform-origin: top center;
 }
 
+/* --- REALISTIC LANYARD STAP & CLIP STYLING --- */
+.id-lace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    /* Nagdadagdag ng organic sway effect habang nakasabit */
+    animation: lanyardSway 4s ease-in-out infinite alternate;
+}
+
+@keyframes lanyardSway {
+    0% { transform: rotate(-1deg); }
+    100% { transform: rotate(1deg); }
+}
+
 .lace-strap {
-    width: 28px;
-    height: 75px;
-    background: linear-gradient(90deg, #0a3d1b 0%, #157a35 50%, #0a3d1b 100%);
-    border-radius: 4px 4px 0 0;
+    width: 34px;
+    height: 85px;
+    /* Mas makatotohanang kulay at gradient na parang tela ng ID lace */
+    background: linear-gradient(90deg, #062410 0%, #0c4a22 25%, #157a35 50%, #0c4a22 75%, #062410 100%);
+    border-radius: 6px 6px 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.7), 0 4px 8px rgba(0,0,0,0.4);
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.8), 0 6px 12px rgba(0,0,0,0.5);
     position: relative;
+    z-index: 1;
 }
 
+/* Texture ng tela (woven texture pattern) */
 .lace-strap::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.2) 3px, rgba(0,0,0,0.2) 6px);
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px);
+    border-radius: 6px 6px 0 0;
 }
 
+/* Metal swivel hook / metal clip na may realistic shine */
 .lace-clip {
-    width: 24px;
-    height: 22px;
-    background: linear-gradient(135deg, #e2e8f0 0%, #64748b 50%, #475569 100%);
-    border-radius: 3px;
-    margin-top: -2px;
+    width: 28px;
+    height: 26px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 40%, #475569 70%, #1e293b 100%);
+    border-radius: 4px;
+    margin-top: -3px;
     border: 1px solid #334155;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.6), inset 0 2px 3px rgba(255,255,255,0.6);
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
+/* Ang ring ng clip na nakakabit sa slot ng ID */
 .lace-clip::after {
     content: '';
     position: absolute;
-    bottom: -7px;
+    bottom: -9px;
     left: 50%;
     transform: translateX(-50%);
-    width: 10px;
-    height: 10px;
-    border: 3px solid #64748b;
+    width: 12px;
+    height: 12px;
+    border: 3.5px solid #64748b;
     border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
-
 .student-id {
     width: 295px;
     background: #ffffff;
