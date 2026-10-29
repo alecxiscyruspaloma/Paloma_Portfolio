@@ -14,26 +14,78 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Artwork Lightbox Modal (Para sa pagpapalaki ng image) -->
+    <!-- Artwork Lightbox Modal (Para sa pagpapalaki ng image) -->
     <div id="artworkLightbox" class="lightbox-modal">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-img" id="lightboxImg" alt="Enlarged Artwork">
     </div>
-<!-- Animated Glowing Background Orbs -->
+
+    <!-- ID Card Popup Modal (Lilitaw kapag pinindot ang header profile) -->
+    <div id="idPopupModal" class="id-popup-overlay">
+        <div class="id-popup-content">
+            <span class="id-popup-close" id="idPopupClose">&times;</span>
+            <h3 class="id-popup-title">Colegio de Montalban Student ID Card</h3>
+            
+            <div class="student-id popup-id-card">
+                <div class="id-gloss"></div>
+                <div class="id-slot-hole"></div>
+
+                <!-- Colegio de Montalban Header -->
+                <div class="id-cdm-header">
+                    <div class="cdm-banner-bg">
+                        <div class="cdm-logo-emblem">CdM</div>
+                        <div class="cdm-text-details">
+                            <div class="cdm-title">Colegio de Montalban</div>
+                            <div class="cdm-subtext">Kasiglahan Village, San Jose, Montalban, Rizal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Photo -->
+                <div class="id-photo-container">
+                    <img src="student-photo.jpg" alt="Alecxis Cyrus D. Paloma" onerror="this.src='https://placehold.co/300x350/005a2b/ffffff?text=Alecxis+Paloma'">
+                </div>
+
+                <!-- Name and Student Number -->
+                <div class="id-student-name">ALECXIS CYRUS D. PALOMA</div>
+                <div class="id-student-number">STUDENT NUMBER: 26-11853</div>
+
+                <!-- Course Banner Box -->
+                <div class="id-course-banner">
+                    Bachelor of Science in Computer Engineering
+                </div>
+
+                <!-- Card Footer Seals -->
+                <div class="id-card-footer">
+                    <div class="id-footer-left">
+                        Official Student ID<br>
+                        <small style="color: #64748b;">Academic Year 2026-2030</small>
+                    </div>
+                    <div class="id-seal-emblem">
+                        RIZAL
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Glowing Background Orbs -->
     <div class="bg-animation-container">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
         <div class="glow-orb orb-3"></div>
     </div>
-<!-- Header & Navigation Bar -->
+
+    <!-- Header & Navigation Bar -->
     <header class="header">
         <nav class="nav-container">
-            <a href="#home" class="logo-profile">
+            <!-- Profile Trigger sa Header (Pindutin para mag-pop up ang ID) -->
+            <div class="nav-profile-trigger" id="profilePopupBtn" title="Click to view ID Card">
                 <div class="header-avatar">
                     <img src="student-photo.jpg" alt="Alecxis Cyrus D. Paloma" onerror="this.src='https://placehold.co/100x100/005a2b/ffffff?text=ACP'">
                 </div>
-                <span class="logo-text">Alecxis Cyrus D. Paloma</span>
-            </a>
+                <span class="logo-text nav-name">Alecxis Cyrus D. Paloma</span>
+            </div>
             
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -74,57 +126,59 @@
             </div>
 
             <div class="hero-visual">
-<!-- Interactive Colegio de Montalban Student ID and lanyard -->
-<div class="id-scene reveal" id="idLanyard" title="Click the ID to swing it">
-    <div class="id-lace">
-        <div class="lace-strap"></div>
-        <div class="lace-clip"></div>
+                <!-- Interactive Colegio de Montalban Student ID and lanyard -->
+                <div class="id-scene reveal" id="idLanyard" title="Click the ID to swing it">
+                    <div class="id-lace">
+                        <div class="lace-strap"></div>
+                        <div class="lace-clip"></div>
 
-        <div class="student-id">
-            <div class="id-gloss"></div>
-            <div class="id-slot-hole"></div>
+                        <div class="student-id">
+                            <div class="id-gloss"></div>
+                            <div class="id-slot-hole"></div>
 
-            <!-- Colegio de Montalban Header -->
-            <div class="id-cdm-header">
-                <div class="cdm-banner-bg">
-                    <div class="cdm-logo-emblem">CdM</div>
-                    <div class="cdm-text-details">
-                        <div class="cdm-title">Colegio de Montalban</div>
-                        <div class="cdm-subtext">Kasiglahan Village, San Jose, Montalban, Rizal</div>
+                            <!-- Colegio de Montalban Header -->
+                            <div class="id-cdm-header">
+                                <div class="cdm-banner-bg">
+                                    <div class="cdm-logo-emblem">CdM</div>
+                                    <div class="cdm-text-details">
+                                        <div class="cdm-title">Colegio de Montalban</div>
+                                        <div class="cdm-subtext">Kasiglahan Village, San Jose, Montalban, Rizal</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Student Photo -->
+                            <div class="id-photo-container">
+                                <img src="student-photo.jpg" alt="Alecxis Cyrus D. Paloma" onerror="this.src='https://placehold.co/300x350/005a2b/ffffff?text=Alecxis+Paloma'">
+                            </div>
+
+                            <!-- Name and Student Number -->
+                            <div class="id-student-name">ALECXIS CYRUS D. PALOMA</div>
+                            <div class="id-student-number">STUDENT NUMBER: 26-11853</div>
+
+                            <!-- Course Banner Box -->
+                            <div class="id-course-banner">
+                                Bachelor of Science in Computer Engineering
+                            </div>
+
+                            <!-- Card Footer Seals -->
+                            <div class="id-card-footer">
+                                <div class="id-footer-left">
+                                    Official Student ID<br>
+                                    <small style="color: #64748b;">Academic Year 2026-2030</small>
+                                </div>
+                                <div class="id-seal-emblem">
+                                    RIZAL
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Student Photo -->
-            <div class="id-photo-container">
-                <img src="student-photo.jpg" alt="Alecxis Cyrus D. Paloma" onerror="this.src='https://placehold.co/300x350/005a2b/ffffff?text=Alecxis+Paloma'">
-            </div>
-
-            <!-- Name and Student Number -->
-            <div class="id-student-name">ALECXIS CYRUS D. PALOMA</div>
-            <div class="id-student-number">STUDENT NUMBER: 26-11853</div>
-
-            <!-- Course Banner Box -->
-            <div class="id-course-banner">
-                Bachelor of Science in Computer Engineering
-            </div>
-
-            <!-- Card Footer Seals -->
-            <div class="id-card-footer">
-                <div class="id-footer-left">
-                    Official Student ID<br>
-                    <small style="color: #64748b;">Academic Year 2026-2030</small>
-                </div>
-                <div class="id-seal-emblem">
-                    RIZAL
-                </div>
-            </div>
         </div>
-    </div>
-</div>
     </section>
 
-<!-- About Me Section -->
+    <!-- About Me Section -->
     <section id="about" class="section reveal">
         <div class="container">
             <div class="section-title">
@@ -165,7 +219,7 @@
         </div>
     </section>
 
-<!-- Skills Section -->
+    <!-- Skills Section -->
     <section id="skills" class="section bg-alt reveal">
         <div class="container">
             <div class="section-title">
@@ -213,7 +267,7 @@
         </div>
     </section>
 
-<!-- Projects Section -->
+    <!-- Projects Section -->
     <section id="projects" class="section reveal">
         <div class="container">
             <div class="section-title">
@@ -302,9 +356,10 @@
                         </div>
                     </div>
                 </div>
-            </div> <!-- Dito nagtatapos nang tuluyan ang .projects-grid -->
+            </div>
         </div>
     </section>
+
     <!-- Contact Section -->
     <section id="contact" class="section bg-alt reveal">
         <div class="container">
