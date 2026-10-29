@@ -110,3 +110,88 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 });
+// --- AUTO-PLAY & INTERACTIVE ARTWORK CAROUSEL ---
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const container = document.querySelector('.carousel-container');
+
+    if (!slides.length) return;
+
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        currentSlide = (index + slides.length) % slides.length;
+
+        slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add('active');
+        }
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextSlide();
+            resetTimer();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevSlide();
+            resetTimer();
+        });
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showSlide(index);
+            resetTimer();
+        });
+    });
+
+    // --- AUTO-PLAY SLIDESHOW ---
+    function startSlideTimer() {
+        slideInterval = setInterval(nextSlide, 4000); // 4000ms = 4 seconds bago lumipat
+    }
+
+    function resetTimer() {
+        clearInterval(slideInterval);
+        startSlideTimer();
+    }
+
+    if (container) {
+        container.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        container.addEventListener('mouseleave', () => startSlideTimer());
+    }
+
+    startSlideTimer();
+});
+.carousel-btn, .carousel-dots, .dot {
+    pointer-events: auto !important;
+    z-index: 20;
+}
+
+.carousel-slide {
+    pointer-events: none;
+}
+.carousel-slide.active {
+    pointer-events: auto;
+}
