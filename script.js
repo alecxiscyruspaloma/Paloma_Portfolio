@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(element);
     });
 
-    // 4. Contact Form Simulation
+    // 4. Contact Form Simulation (Kung gagamitin ang Formspree, pwedeng palitan sa sunod)
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
 
-    if (contactForm && formSuccess) {
+    if (contactForm && formSuccess && !contactForm.action.includes('formspree.io')) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -160,8 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // 4-Second Timer with overlap protection
         function startSlideTimer() {
-            slideInterval = setInterval(nextSlide, 4000); // 4 seconds bago mag-slide nang kusa
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 4000); // Eksaktong 4 seconds bago lumipat
         }
 
         function resetTimer() {
